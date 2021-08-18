@@ -1,24 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Movies ({year, title, summary, poster, genres}) {
+function Animals ({year, title, summary, poster, genres}) {
     return (
-        <div className="movie">
+        <div className="animal">
             <img src={poster} alt={title} title={title} />
-            <div className="movie__data">
-                <h3 className="movie__title">{title}</h3>
-                <h5 className="movie__year">{year}</h5>
+            <div className="animal__data">
+                <h3 className="animal__title">{title}</h3>
+                <h5 className="animal__year">{year}</h5>
                 <ul className="genres">
                     {genres.map(genre => (
                     <li className="genres__genre">{genre}</li>))}
                 </ul>
-                <p className="movie__summary">{summary.slice(0, 180)}...</p>
+                <p className="animal__summary">{summary.slice(0, 180)}...</p>
             </div>
         </div>
     )
 }
 
-Movies.prototypes = {
+animals.prototypes = {
     id : PropTypes.number.isRequired,
     year : PropTypes.node.isRequired,
     title : PropTypes.string.isRequired,
@@ -26,4 +26,4 @@ Movies.prototypes = {
     poster : PropTypes.string.isRequired,
 };
 
-export default Movies;
+export default animals;
