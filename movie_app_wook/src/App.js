@@ -2,16 +2,18 @@ import React from 'react';
 import PropTypes from "prop-types";
 import axios from "axios";
 import Movie from "./Aniamals";
+import Animal from "./Animals.json";
 
 class App extends React.Component {
     state = {
         isLoading : true,
-        movies : [],
+        aninamls : [],
     }
 
     getMovies = async () => {
-        const { data : { data : { movies }}} = await axios.get("https://yts-proxy.now.sh/list_movies.json");
-        this.setState({movies : movies, isLoading : false});
+        // const { data : { data : { movies }}} = await axios.get("https://yts-proxy.now.sh/list_movies.json");
+        const aninamls = Animal;
+        this.setState({aninamls : movies, isLoading : false});
 
     };
 
