@@ -1,53 +1,42 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import axios from "axios";
-import Movie from "./Aniamals";
+import Animals from "./Animals";
 import Animal from "./Animals.json";
 
 class App extends React.Component {
     state = {
-        isLoading : true,
-        aninamls : [],
+        aninamls : []
     }
 
     getMovies = async () => {
         // const { data : { data : { movies }}} = await axios.get("https://yts-proxy.now.sh/list_movies.json");
-        const aninamls = Animal;
-        this.setState({aninamls : movies, isLoading : false});
-
+        const aninaml_json = Animal;
+        await this.setState({aninamls : aninaml_json});
     };
 
     componentDidMount() {
         this.getMovies();
     }
 
-    renderMovies = (movie) => {
+    renderMovies = (animal) => {
         return (
-            <Movie 
-                id={movie.id}
-                year={movie.year}
-                title={movie.title}
-                summary={movie.summary}
-                poster={movie.medium_cover_image}
-                genres={movie.genres}
+            <Animals 
+                name={animal.name}
+                image={animal.image}
+                description={animal.description}
             />
         )
     }
 
     render() {
-        const { isLoading, movies } = this.state;
+        const { animals } = this.state;
         return (
             <section className="container">
-                {isLoading ? (
-                    <div className="loader">
-                        <span className="loader__text">Loading...</span>
+                {
+                    <div className="animals">
+                        {animals.map(this.renderMovies)}
                     </div>
-                ) : (
-                    <div className="movies">
-                        {movies.map(this.renderMovies)}
-                    </div>
-                )
-        
                 }
             </section>
         )
